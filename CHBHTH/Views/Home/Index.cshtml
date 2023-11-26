@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "Cây Xanh";
+
+    Layout = "~/Views/Shared/_LayoutClient2.cshtml";
+}
+@using CHBHTH.Models;
+
+
+<div class="page-section section-1">
+    <div class="row align-items-center">
+        <div class="col-lg-8 d-flex flex-column align-items-center justify-content-center" style="height: 100vh">
+            <h1 class="display-4 text-center" style="font-weight: normal">
+                <b>Chào Mừng</b>
+            </h1>
+            <p class="col-lg-8 justify-content-center" style="text-align: justify; margin-top: 30px; font-style: oblique">Chào mừng bạn đến với Cửa hàng Cây Xanh! Chúng tôi là một đội ngũ đam mê cây cảnh, cam kết mang đến vẻ đẹp và sự sống đầy màu sắc của cây trong nhà đến cuộc sống của bạn.<br>Tại Cửa hàng Cây Cảnh, chúng tôi tự hào cung cấp một loạt các loại cây cảnh đa dạng và chất lượng cao, từ những cây mini dễ thương cho tới những cây to lớn với hình dáng ấn tượng. Chúng tôi đảm bảo rằng các cây cảnh của chúng tôi được chăm sóc đúng cách để đảm bảo rằng chúng sẽ thật khỏe mạnh và tươi tắn khi đến tay bạn.<br>Đội ngũ chuyên gia tư vấn của chúng tôi luôn sẵn sàng giúp đỡ bạn chọn lựa cây phù hợp với không gian sống và sở thích của bạn. Chúng tôi tin rằng cây cảnh không chỉ là một phần trang trí mà còn mang lại lợi ích cho sức khỏe và tinh thần của bạn.</p>
+            <button class="finding-more-our-button">
+                @Html.Raw(Html.ActionLink("Tìm hiểu thêm về chúng tôi", "About", null, new { style = "color: #5F6F52; text-decoration: none;" }).ToHtmlString())
+            </button>        
+            </div>
+        <div class="col-lg-4 d-flex justify-content-center align-items-center" style="height: 100vh">
+            <img src="~/Images/svg/first_sector_logo.svg" alt="App Logo" width="100%" height="100%" class="mr-2">
+        </div>
+    </div>
+</div>
+
+<div class="page-section section-1">
+    <div class="row align-items-center">
+        <div class="col-lg-8 d-flex flex-column align-items-center justify-content-center" style="height: 100vh">
+            <h1 class="display-4 text-center" style="font-weight: normal">
+                <b>Chăm sóc cây cùng chúng tôi</b>
+            </h1>
+            <p class="col-lg-8 justify-content-center" style="text-align: justify; margin-top: 30px; font-style: oblique">
+                Tại blog của chúng tôi, chúng tôi đưa ra những bài viết chi tiết về cách chăm sóc từng loại cây cụ thể, chia sẻ những bí quyết để cây của bạn phát triển khỏe mạnh, đẹp mắt. Bạn sẽ tìm thấy thông tin hữu ích về cách tưới nước, lượng ánh sáng phù hợp, dinh dưỡng, và cách giải quyết các vấn đề phổ biến liên quan đến cây cảnh.
+
+                <br><br>🌱 Kinh Nghiệm Từ Cộng Đồng Chăm Sóc Cây
+
+                <br><br>Chúng tôi không chỉ là người viết blog mà còn là một cộng đồng yêu cây, nơi mà bạn có thể chia sẻ kinh nghiệm của mình và học hỏi từ những người khác. Cùng nhau, chúng ta sẽ tạo nên một nguồn thông tin phong phú và đa dạng về chăm sóc cây, giúp mỗi người trở thành người chăm sóc cây tốt nhất.
+
+                <br><br>🌳 Tham gia Ngay và Bắt Đầu Hành Trình Chăm Sóc Cây Của Bạn!
+            </p>
+            <button class="finding-more-our-button">
+                @Html.Raw(Html.ActionLink("Tham gia ngay cùng chúng tôi", "Index","tintuc", new {area = ""},new { style = "color: #5F6F52; text-decoration: none;" }).ToHtmlString())
+            </button>   
+        </div>
+        <div class="col-lg-4 d-flex justify-content-center align-items-center" style="height: 100vh">
+            <img src="~/Images/svg/first_sector_logo.svg" alt="App Logo" width="100%" height="100%" class="mr-2">
+        </div>
+    </div>
+</div>
+
+<style>
+    .page-section {
+        width: 100%;
+        height: 100vh;
+    } 
+    
+    .section-1{
+        width: 100%;
+        height: 100vh;
+        background-color: #A7D397;
+    }
+    
+</style>
+
+<style>
+    .finding-more-our-button {
+        display: inline-block;
+        padding: 10px 20px; /* Adjust padding as needed */
+        background-color: #FEFAE0; /* Button color */
+        color: #fff; /* Text color */
+        text-decoration: none;
+        border-radius: 5px; /* Optional: Adds rounded corners */
+        transition: background-color 0.3s ease; /* Smooth hover effect */
+    }
+
+    .finding-more-our-button:hover {
+        background-color: #A9B388; /* Change the color on hover */
+    }
+</style>

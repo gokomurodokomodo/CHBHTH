@@ -1,0 +1,83 @@
+﻿@model IEnumerable<CHBHTH.Models.TinTuc>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutClient2.cshtml";
+}
+
+
+<div class="page-section section-1">
+    <div class="row align-items-center">
+        <div class="col-lg-12 d-flex flex-column align-items-center justify-content-center" style="height: 50vh">
+            <h1 class="display-4 text-center" style="font-weight: normal"><b>Kinh nghiệm chăm sóc cây</b></h1>
+           
+        </div>
+    </div>
+</div>
+@foreach (var item in Model)
+{
+    <div class="section-1 d-flex align-items-center justify-content-center">
+        <div class="section-2 d-flex align-items-center justify-content-center">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-12 d-flex flex-column align-items-center justify-content-center">
+                    @Html.ActionLink(item.TieuDe,
+                        "xemchitiettintuc", 
+                        new { @MaTT = item.MaTT },
+                        new { @class = "display-6 text-center", @style = "font-weight: normal; text-decoration: none; color: #0c5460"})
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<style>
+    .page-section {
+        width: 100%;
+        height: 50vh;
+    } 
+    
+    .section-1{
+        height: 25vh;
+        background-color: #A7D397;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .section-2{
+            width: 50%;
+            height: 10vh;
+            background-color: #FEFAE0;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+    }
+    
+    .finding-more-our-button{
+        border: 2px solid #F2FFE9; 
+        border-radius: 20px; 
+        background-color: #F2FFE9; 
+        color: #000000; 
+        padding: 10px 20px;
+    }
+    
+    .scroll-container {
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    .scroll-wrapper {
+    display: flex;
+    white-space: nowrap;
+    animation: scroll 10s linear infinite;
+    }
+    
+    .card-item {
+    flex: 0 0 auto;
+    width: 200px;
+    margin-right: 20px;
+    border-radius: 20px; 
+    padding: 10px;
+    background: #f0f0f0;
+    text-align: center;
+    }
+</style>

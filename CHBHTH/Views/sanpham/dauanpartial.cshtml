@@ -1,0 +1,86 @@
+﻿@using CHBHTH.Models;
+@model List<SanPham>
+
+<section class="py-1">
+    <center> <h3> Các sản phẩm dầu ăn </h3> </center>
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                @foreach (var item in Model)
+                {
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image -->
+                            <a href="@Url.Action("xemchitiet", new { @MaSP = item.MaSP })">
+                                <div class="text-center">
+                                    @if (item.AnhSP != null)
+                                    {
+                                        <img src="@Url.Content("~" + item.AnhSP.ToString())" class="card-img-top" alt="Product Image" width="200" height="150" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@Url.Content("~/Images/RAU-1.jpg")" class="card-img-top" alt="Default Image" width="200" height="150" />
+                                    }
+                                </div>
+                            </a>
+                            <!-- Product details -->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name -->
+                                    <h5 class="card-title fw-bolder">@item.TenSP</h5>
+                                    <!-- Product price -->
+                                    <p class="card-text">Giá: @String.Format("{0:0,0}", @item.GiaBan) VND</p>
+                                </div>
+                            </div>
+                            <!-- Product actions -->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center">
+                                    @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaSP = item.MaSP, @strURL = Request.Url.ToString() }))
+                                    {
+                                        <input type="submit" value="Thêm vào giỏ hàng" id="bgnGioHang" class="btn btn-outline-dark" />
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+</section>
+  
+<style>
+    .col.mb-5 {
+        margin-bottom: 1.25rem; /* Adjust the margin-bottom as needed */
+    }
+
+    .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+    .card-img-top {
+        object-fit: cover;
+    }
+
+    .card-title {
+        color: #333;
+    }
+
+    .card-text {
+        color: #666;
+    }
+
+    .btn-outline-dark {
+        color: #343a40;
+        border-color: #343a40;
+    }
+
+    .btn-outline-dark:hover {
+        color: #fff;
+        background-color: #343a40;
+    }
+</style>
+
