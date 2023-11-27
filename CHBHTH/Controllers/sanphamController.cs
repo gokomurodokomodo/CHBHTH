@@ -39,11 +39,18 @@ namespace CHBHTH.Controllers
         public ActionResult xemchitiet(int Masp = 0)
         {
             var chitiet = db.SanPhams.SingleOrDefault(n => n.MaSP == Masp);
+            var sanphamcungloai = db.SanPhams.Where(n => n.NhaCungCap.MaNCC == chitiet.NhaCungCap.MaNCC).ToList();
+            if (sanphamcungloai.Count > 6)
+            {
+                sanphamcungloai.RemoveRange(6, sanphamcungloai.Count);
+            }
             if (chitiet == null)
             {
                 Response.StatusCode = 404;
                 return null;
             }
+
+            @ViewBag.SanPhamCungLoai = sanphamcungloai;
             return View(chitiet);
         }
 

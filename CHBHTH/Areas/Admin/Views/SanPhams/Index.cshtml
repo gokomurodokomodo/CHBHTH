@@ -58,7 +58,7 @@
                 @Html.DisplayFor(modelItem => item.MoTa)
             </td>
             <td>
-                <img src="@Html.DisplayFor(modelItem => item.AnhSP)" width="100px" height="100px" />
+                <img src="@Url.Content("~/Images/" + item.AnhSP)" width="100px" height="100px" />
             </td>
             <td>
                 <button class="btn btn-primary">

@@ -48,24 +48,27 @@
                 <button class="btn btn-outline-secondary" type="submit">
                     @Html.Action("GioHangPartial", "GioHang", new { @class = "giohang" })
                 </button>
-                <ul class="navbar-nav ms-auto ">
-                    @{ if (u != null)
-                       {
-                           <li class="nav-item mx-0 mx-lg-1">
-                               <a style="color:black" href="@Url.Action("Profile", "User", new { id = u.MaNguoiDung  })"> Xin chào : @u.Email</a>
-                               <br />
-                               <a style="color:red" href="/User/DangXuat"> ĐĂNG XUẤT</a>
-                           </li>
-
-                       }
-                       else
-                       {
-                           <td class="nav-item mx-0 mx-lg-1"> @Html.ActionLink("Đăng nhập", "Dangnhap", "User", new { area = "" }, new { @class = "nav-link py-3 px-0 px-lg-3 rounded" }) </td>
-
-                       } }
-                </ul>
             </form>
         </div>
+        <ul class="navbar-nav ml-auto ml-md-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                    @if (u != null)
+                    {
+                        <a class="dropdown-item" style="color:red" href="@Url.Action("Profile", "User", new { id = u.MaNguoiDung })"> Xin chào : @u.Email</a>
+        
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/User/DangXuat"> Đăng xuất</a>
+                    }
+                    else
+                    {
+                        <a class="dropdown-item" style="color:red" href="@Url.Action("Dangnhap", "User", new { area = "",@class = "nav-link py-3 px-0 px-lg-3 rounded" })">Đăng nhập</a>
+                    }
+        
+                </div>
+            </li>
+        </ul>
     </div>
 </nav>
 
@@ -114,6 +117,16 @@
 
 <script src="~/Content/ckeditor/adapters/jquery.js"></script>
 
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="~/Areas/Assets/dist/js/scripts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script src="~/Areas/Assets/dist/assets/demo/chart-area-demo.js"></script>
+<script src="~/Areas/Assets/dist/assets/demo/chart-bar-demo.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+<script src="~/Areas/Assets/dist/assets/demo/datatables-demo.js"></script>
+
 
 <script>
 </script>
@@ -124,5 +137,56 @@
 <style>
     body{
         min-height: 100vh;
+    }
+</style>
+
+<style>
+    /* Dropdown Button */
+    .dropbtn {
+        background-color: #04AA6D;
+        color: white;
+        padding: 10px;
+        margin: 5px;
+        font-size: 16px;
+        border: none;
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+            /* Change color of dropdown links on hover */
+            .dropdown-content a:hover {
+                background-color: #ddd;
+            }
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {
+        background-color: #3e8e41;
     }
 </style>

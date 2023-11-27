@@ -8,7 +8,7 @@
 <section class="py-0">
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
-            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="@Url.Content("~" +@Model.AnhSP)" alt="..." /></div>
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="@Url.Content("~/Images/" + @Model.AnhSP)" alt="..." /></div>
             <div class="col-md-6">
                 <div class="small mb-1">Loại hàng:  @Model.LoaiHang.TenLoai</div>
                 <div class="small mb-1">Nhà cung cấp: @Model.NhaCungCap.TenNCC</div>
@@ -20,15 +20,60 @@
                 <p class="lead"> @Model.MoTa </p>
                 <div class="d-flex">
                    
-                        @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaSP = Model.MaSP, @strURL = Request.Url.ToString() }))
-                        {
-                            <i class="bi-cart-fill me-1"></i>
-                            <input type="submit" value="Thêm vào giỏ hàng" id="bgnGioHang" class="btn btn-outline-dark flex-shrink-0" />
-
-                        }
-
+                    @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaSP = Model.MaSP, @strURL = Request.Url.ToString() }))
+                    {
+                        <input type="submit" value="Thêm vào giỏ hàng" id="bgnGioHang" class="btn btn-outline-dark flex-shrink-0" />
+                    }
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<section class="py-0">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="cke_label">
+            
+            <h2>Các sản phẩm có cùng nhà cung cấp </h2>
+        </div>
+         <div class="container px-4 px-lg-5 mt-5">
+             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4">
+                 @foreach (var item in ViewBag.SanPhamCungLoai)
+                 {
+                     <div class="col mb-5 product-item">
+                         <div class="card h-100">
+                             <a href="@Url.Action("xemchitiet", new { @MaSP = item.MaSP })">
+                                 <div class="image-container text-center">
+                                     @if (item.AnhSP != null)
+                                     {
+                                         <img src="@Url.Content("~/Images/" + item.AnhSP.ToString())" class="img-responsive" alt="" width="100%"/>
+                                     }
+                                     else
+                                     {
+                                         <img src="@Url.Content("~/Images/RAU-1.jpg")" class="img-responsive" alt="" width="100%"/>
+                                     }
+                                 </div>
+                             </a>
+                             <div class="card-body p-4">
+                                 <div class="text-center">
+                                     <h5 class="fw-bolder">@item.TenSP</h5>
+                                     Giá: @String.Format("{0:0,0}", @item.GiaBan) VND
+                                 </div>
+                             </div>
+                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                 <div class="text-center">
+                                     @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaSP = item.MaSP, @strURL = Request.Url.ToString() }))
+                                     {
+                                         <input type="submit" value="Thêm vào giỏ hàng" id="btnGioHang" class="btn btn-outline-dark mt-auto" />
+                                     }
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+              
+                 }
+             </div>
+             </div>
+    </div>
+</section>
+
